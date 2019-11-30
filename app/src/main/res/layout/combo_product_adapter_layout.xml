@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <data>
+        <variable
+            name="data"
+            type="assignment.demoapplication.com.mvvmarchitecture.productdetailmodule.model.ProductCombo" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5sdp"
+        android:elevation="4dp"
+        app:contentPadding="4dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_80sdp"
+            app:imageUrls="@{data.sku1.skuImageUrl}"
+            android:id="@+id/sku1_image"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:text="@{data.sku1.skuName}"
+            android:layout_below="@+id/sku1_image"
+            android:id="@+id/sku1_text"
+            android:textSize="@dimen/_10sdp"
+            android:maxLines="3"
+            android:ellipsize="end"
+            android:textColor="@android:color/black"
+            android:layout_marginStart="@dimen/_5sdp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.format(@string/price, data.sku1.defaultPrice)}"
+            android:layout_below="@+id/sku1_text"
+            android:textSize="@dimen/_10sdp"
+            android:textColor="@color/red"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/_5sdp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_input_add"
+            android:tint="@android:color/black"
+            android:layout_toEndOf="@id/sku1_image"
+            android:id="@+id/plus"
+            android:layout_marginTop="@dimen/_25sdp"/>
+
+        <ImageView
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_80sdp"
+            app:imageUrls="@{data.sku2.skuImageUrl}"
+            android:id="@+id/sku2_image"
+            android:layout_toEndOf="@id/plus" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:text="@{data.sku2.skuName}"
+            android:layout_below="@+id/sku2_image"
+            android:layout_alignStart="@+id/sku2_image"
+            android:textSize="@dimen/_10sdp"
+            android:maxLines="3"
+            android:ellipsize="end"
+            android:textColor="@android:color/black"
+            android:id="@+id/sku2_text"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.format(@string/price, data.sku2.defaultPrice)}"
+            android:layout_below="@+id/sku2_text"
+            android:textSize="@dimen/_10sdp"
+            android:textColor="@color/red"
+            android:layout_alignStart="@+id/sku2_image"
+            android:textStyle="bold"
+            android:id="@+id/sku2_price"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sku2_price"
+            android:text="@{String.format(@string/price,data.defaultPrice)}"
+            android:id="@+id/comboPrice"
+            android:textColor="@color/red"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/_8sdp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_below="@+id/comboPrice"
+            android:text="@string/buy_now"
+            android:textAllCaps="false"
+            android:textColor="@color/orange"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/rectangle_with_orange_border"/>
+
+
+    </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

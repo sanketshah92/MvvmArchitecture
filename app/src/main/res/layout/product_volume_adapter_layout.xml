@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="assignment.demoapplication.com.mvvmarchitecture.productdetailmodule.model.Volume" />
+    </data>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/vol1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_10sdp"
+        android:background="@drawable/volume_selector"
+        android:enabled="@{data.selected}"
+        android:gravity="center"
+        android:text="@{data.volume}"
+        android:textColor="@color/color_selector"
+        android:textSize="@dimen/_9sdp" />
+
+</layout>
