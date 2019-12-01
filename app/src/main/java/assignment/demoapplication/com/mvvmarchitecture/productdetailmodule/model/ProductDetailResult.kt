@@ -77,7 +77,8 @@ data class Qna(
     val answer: Answer,
     val postedDate: Long,
     val queryText: String,
-    val userNickname: String
+    val userNickname: String,
+    var postedBy : String
 )
 
 data class Review(
@@ -85,7 +86,8 @@ data class Review(
     val reviewText: String,
     val reviewTitle: String,
     val skuRating: Int,
-    val userNickname: String
+    val userNickname: String,
+    var reviewPostedBy:String
 )
 
 data class Sku1(

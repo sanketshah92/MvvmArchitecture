@@ -17,12 +17,14 @@
         android:layout_height="match_parent">
 
         <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/appBar">
+            android:layout_height="wrap_content">
+
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize" >
+                android:layout_height="?attr/actionBarSize">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
@@ -30,25 +32,25 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_back"
-                        android:layout_centerVertical="true"/>
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_back" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:text="@string/product_details"
-                        android:textStyle="bold"
+                        android:textColor="@android:color/black"
                         android:textSize="@dimen/_14sdp"
-                        android:textColor="@android:color/black"/>
+                        android:textStyle="bold" />
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_filter_results_button"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginEnd="@dimen/_8sdp"/>
+                        android:layout_marginEnd="@dimen/_8sdp"
+                        android:src="@drawable/ic_filter_results_button" />
 
 
                 </RelativeLayout>
@@ -57,407 +59,610 @@
         </com.google.android.material.appbar.AppBarLayout>
 
 
-
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/appBar">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".productdetailmodule.view.ProductDetailActivity"
-            android:background="@android:color/white">
+            android:layout_below="@+id/appBar">
 
-
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/viewPager"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_180sdp"
-                app:layout_constraintBottom_toTopOf="@id/worm_dots_indicator"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
-                android:id="@+id/worm_dots_indicator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_5sdp"
-                app:dotsColor="@color/orange"
-                app:dotsCornerRadius="@dimen/_8sdp"
-                app:dotsSize="@dimen/_8sdp"
-                app:dotsSpacing="4dp"
-                app:dotsStrokeColor="@android:color/darker_gray"
-                app:dotsStrokeWidth="2dp"
-                app:layout_constraintBottom_toTopOf="@id/brandName"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/viewPager" />
-
-            <TextView
-                android:id="@+id/brandName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_10sdp"
-                android:text="@{data.brandName}"
-                android:textColor="@color/orange"
-                android:textSize="@dimen/_14sdp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/viewPager" />
-
-            <TextView
-                android:id="@+id/brandDetailName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:text="@{data.skuName}"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_14sdp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/brandName" />
-
-
-            <TextView
-                android:id="@+id/price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_10sdp"
-                android:text="@{String.format(@string/price,data.defaultPrice)}"
-                android:textColor="@color/red"
-                android:textSize="@dimen/_13sdp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/brandDetailName" />
-
-            <View
-                android:id="@+id/dividerRating"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:background="@android:color/darker_gray"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/price" />
-
-            <androidx.appcompat.widget.AppCompatRatingBar
-                android:id="@+id/ratingBar"
-                style="?android:attr/ratingBarStyleIndicator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_10sdp"
-                android:max="5"
-                android:rating="@{data.skuAverageRating}"
-                android:scaleX="1"
-                android:scaleY="1"
-                android:transformPivotX="0dp"
-                android:transformPivotY="0dp"
-
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/dividerRating" />
-
-            <TextView
-                android:id="@+id/review"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:text="@{data.skuReviewCount}"
-                android:textColor="@color/orange"
-                android:textSize="@dimen/_12sdp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@id/ratingBar"
-                app:layout_constraintTop_toBottomOf="@id/dividerRating" />
-
-            <View
-                android:id="@+id/dividerVolume"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:background="@android:color/darker_gray"
-                app:layout_constraintBottom_toTopOf="@id/dividerAllVolume"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/review" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/volumeLable"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_10sdp"
-                android:text="@string/lbl_volume"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_12sdp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dividerVolume" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@id/dividerVolumeEnd"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/volumeLable"
-                android:id="@+id/volumeRecyclerView"/>
-
-          <!--  <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/vol1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_10sdp"
-                android:background="@drawable/volume_selector"
-                app:chainUseRtl="true"
-                app:layout_constraintBottom_toTopOf="@id/dividerVolumeEnd"
-                app:layout_constraintHorizontal_chainStyle="packed"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/volumeLable"
-                android:text="@{data.variants.volume}"/>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/vol2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_10sdp"
-                android:background="@drawable/volume_selected"
-                app:layout_constraintBottom_toTopOf="@id/dividerVolumeEnd"
-                app:layout_constraintStart_toEndOf="@+id/vol1"
-                app:layout_constraintTop_toBottomOf="@id/volumeLable" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_10sdp"
-                android:background="@drawable/volume_selected"
-                app:layout_constraintBottom_toTopOf="@id/dividerVolumeEnd"
-                app:layout_constraintStart_toEndOf="@id/vol2"
-                app:layout_constraintTop_toBottomOf="@id/volumeLable" />-->
-
-            <View
-                android:id="@+id/dividerAllVolume"
-                android:layout_width="1dp"
-                android:layout_height="@dimen/_80sdp"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:background="@android:color/darker_gray"
-                app:layout_constraintBottom_toTopOf="@id/dividerVolumeEnd"
-                app:layout_constraintEnd_toStartOf="@+id/viewAllVolume" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/viewAllVolume"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/_12sdp"
-                android:gravity="center"
-                android:text="@string/view_all_volumes"
-                android:textColor="@color/orange"
-                android:textSize="@dimen/_12sdp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@id/dividerVolumeEnd"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/dividerVolume" />
-
-
-            <View
-                android:id="@+id/dividerVolumeEnd"
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dividerAllVolume" />
-
-
-            <LinearLayout
-                android:id="@+id/tabLayout_ll"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_200sdp"
-                android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/dividerVolumeEnd">
-
-
-                <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/tabLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:tabIndicator="@color/white"
-                    app:tabMode="scrollable"
-                    app:tabSelectedTextColor="@color/orange"
-                    app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
-                    tools:layout_editor_absoluteY="4dp" />
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                tools:context=".productdetailmodule.view.ProductDetailActivity">
 
 
                 <androidx.viewpager.widget.ViewPager
-                    android:id="@+id/tabViewPager"
+                    android:id="@+id/viewPager"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="@dimen/_180sdp"
+                    app:layout_constraintBottom_toTopOf="@id/worm_dots_indicator"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
+                    android:id="@+id/worm_dots_indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    app:dotsColor="@color/orange"
+                    app:dotsCornerRadius="@dimen/_8sdp"
+                    app:dotsSize="@dimen/_8sdp"
+                    app:dotsSpacing="4dp"
+                    app:dotsStrokeColor="@android:color/darker_gray"
+                    app:dotsStrokeWidth="2dp"
+                    app:layout_constraintBottom_toTopOf="@id/brandName"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewPager" />
+
+                <TextView
+                    android:id="@+id/brandName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:text="@{data.brandName}"
+                    android:textColor="@color/orange"
+                    android:textSize="@dimen/_14sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/viewPager" />
+
+                <TextView
+                    android:id="@+id/brandDetailName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{data.skuName}"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold"
+                    android:gravity="start|center"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/brandName"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"/>
 
 
-            </LinearLayout>
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:text="@{String.format(@string/price,data.defaultPrice)}"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/_13sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/brandDetailName" />
 
-            <View
-                android:id="@+id/dividerDescription"
+                <View
+                    android:id="@+id/dividerRating"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@android:color/darker_gray"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/price" />
+
+                <androidx.appcompat.widget.AppCompatRatingBar
+                    android:id="@+id/ratingBar"
+                    style="?android:attr/ratingBarStyleIndicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:max="5"
+                    android:rating="@{data.skuAverageRating}"
+                    android:scaleX="1"
+                    android:scaleY="1"
+                    android:transformPivotX="0dp"
+                    android:transformPivotY="0dp"
+
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/dividerRating" />
+
+                <TextView
+                    android:id="@+id/review"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:text="@{data.skuReviewCount}"
+                    android:textColor="@color/orange"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@id/ratingBar"
+                    app:layout_constraintTop_toBottomOf="@id/dividerRating" />
+
+                <View
+                    android:id="@+id/dividerVolume"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:background="@android:color/darker_gray"
+                    app:layout_constraintBottom_toTopOf="@id/dividerAllVolume"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/review" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/volumeLable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:text="@string/lbl_volume"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/dividerVolume" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/volumeRecyclerView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toTopOf="@id/dividerVolumeEnd"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/volumeLable" />
+
+
+                <View
+                    android:id="@+id/dividerAllVolume"
+                    android:layout_width="1dp"
+                    android:layout_height="@dimen/_80sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:background="@android:color/darker_gray"
+                    app:layout_constraintBottom_toTopOf="@id/dividerVolumeEnd"
+                    app:layout_constraintEnd_toStartOf="@+id/viewAllVolume" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/viewAllVolume"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/_12sdp"
+                    android:gravity="center"
+                    android:text="@string/view_all_volumes"
+                    android:textColor="@color/orange"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@id/dividerVolumeEnd"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/dividerVolume" />
+
+
+                <View
+                    android:id="@+id/dividerVolumeEnd"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/dividerAllVolume" />
+
+
+                <LinearLayout
+                    android:id="@+id/tabLayout_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_200sdp"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toTopOf="@+id/dividerDescription"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/dividerVolumeEnd">
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tabLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:tabIndicator="@color/white"
+                        app:tabMode="scrollable"
+                        app:tabSelectedTextColor="@color/orange"
+                        app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+                        tools:layout_editor_absoluteY="4dp" />
+
+                    <androidx.viewpager.widget.ViewPager
+                        android:id="@+id/tabViewPager"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/dividerDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:background="@android:color/darker_gray"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tabLayout_ll" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtNoNasties"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/pacifico_regular"
+                    android:gravity="center"
+                    android:text="@{data.cleanBeauty.title}"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_18sdp"
+                    android:textStyle="bold|italic"
+                    app:layout_constraintBottom_toTopOf="@+id/txtNoNastiesText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/dividerDescription" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/txtNoNastiesText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_16sdp"
+                    android:gravity="center"
+                    android:text="@{data.cleanBeauty.subTitle}"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_12sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtNoNasties" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvNoNastiesImages"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_60sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtNoNastiesText" />
+
+                <View
+                    android:id="@+id/dividerNoNasties"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:background="@android:color/darker_gray"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rvNoNastiesImages" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/geniuneLogo"
+                    android:layout_width="@dimen/_60sdp"
+                    android:layout_height="@dimen/_60sdp"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:background="@drawable/shape_pink_oval"
+                    android:gravity="center"
+                    android:text="@string/lbl_geniune_products"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_9sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/dividerNoNasties" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/geniuneLogoText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:text="@string/geniune_text"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintBottom_toBottomOf="@+id/geniuneLogo"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/geniuneLogo"
+                    app:layout_constraintTop_toTopOf="@+id/geniuneLogo" />
+
+
+                <View
+                    android:id="@+id/dividerGenuine"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:background="@android:color/darker_gray"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/geniuneLogo" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/deliveryOption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:text="@{data.deliveryTitle}"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/dividerGenuine" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/pinCodeEditText"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:background="@android:color/transparent"
+                    android:hint="@string/pin_code"
+                    android:inputType="number"
+                    android:maxLength="6"
+                    app:layout_constraintEnd_toStartOf="@id/pinCodeCheckButton"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/deliveryOption" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/pinCodeCheckButton"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:background="@drawable/rectangle_with_orange_border"
+                    android:text="@string/check"
+                    android:textAllCaps="false"
+                    android:textColor="@color/orange"
+                    android:textSize="@dimen/_10sdp"
+                    app:layout_constraintStart_toEndOf="@+id/pinCodeEditText"
+                    app:layout_constraintTop_toBottomOf="@id/deliveryOption" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/standardDeliveryCheck"
+                    android:layout_width="@dimen/_8sdp"
+                    android:layout_height="@dimen/_8sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_7sdp"
+                    android:src="@drawable/ic_correct_mark"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/pinCodeEditText" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/standardDeliveryText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:text="@string/standard_delivery_2_5_working_days"
+                    android:textColor="@android:color/holo_green_light"
+                    android:textSize="@dimen/_8sdp"
+                    app:layout_constraintStart_toEndOf="@+id/standardDeliveryCheck"
+                    app:layout_constraintTop_toBottomOf="@id/pinCodeEditText" />
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/expressDeliveryCheck"
+                    android:layout_width="@dimen/_8sdp"
+                    android:layout_height="@dimen/_8sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_7sdp"
+                    android:src="@drawable/ic_correct_mark"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/standardDeliveryCheck" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/expressDeliveryText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:text="@string/express_delivery_24_hours"
+                    android:textColor="@android:color/holo_green_light"
+                    android:textSize="@dimen/_8sdp"
+                    app:layout_constraintStart_toEndOf="@+id/expressDeliveryCheck"
+                    app:layout_constraintTop_toBottomOf="@id/standardDeliveryText" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/collectFromStoreCheck"
+                    android:layout_width="@dimen/_8sdp"
+                    android:layout_height="@dimen/_8sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:src="@drawable/ic_correct_mark"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/expressDeliveryCheck" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/collectFromStoreText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:text="@string/click_collect_order_online_collect_from_store"
+                    android:textColor="@android:color/holo_green_light"
+                    android:textSize="@dimen/_8sdp"
+                    app:layout_constraintStart_toEndOf="@+id/collectFromStoreCheck"
+                    app:layout_constraintTop_toBottomOf="@id/expressDeliveryText" />
+
+
+                <View
+                    android:id="@+id/dividerDeliveryOption"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:background="@android:color/darker_gray"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/collectFromStoreText" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/askExpertText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:text="@string/ask_our_expert"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_11sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/dividerDeliveryOption" />
+
+                <LinearLayout
+                    android:id="@+id/postQuestion_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:background="@drawable/rounded_rectangle_grey_filled"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/askExpertText">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/postQuestionEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_3sdp"
+                        android:background="@null"
+                        android:hint="@string/have_a_question_about_this_product_post_it_here"
+                        android:textSize="@dimen/_12sdp" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/postYourQuestionBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:background="@drawable/rectangle_with_black_border"
+                    android:text="@string/post_your_question"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/postQuestion_ll" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/questionsRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/_10sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/postYourQuestionBtn" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/showAllQuestionAnswerBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:background="@drawable/rectangle_with_black_border"
+                    android:text="@string/show_all_question_and_answers"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/questionsRecyclerView" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/pairWith"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:text="@string/pair_with"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/showAllQuestionAnswerBtn" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/comboRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/pairWith" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/userReviewAndRatingText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:text="@string/user_reviews_ratings"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_11sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/comboRecyclerView" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/signInAndWriteReviewBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:background="@drawable/rectangle_with_black_border"
+                    android:text="@string/sign_in_to_rate_and_write_a_review"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/userReviewAndRatingText" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/reviewRatingRecyclerView"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/_10sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/signInAndWriteReviewBtn" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/reviewRatingRecyclerView"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.core.widget.NestedScrollView>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_alignParentBottom="true">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/wishList"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_centerVertical="true"
+                android:background="@android:color/white"
+                android:foregroundGravity="center"
+                android:src="@drawable/ic_heart" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/addToBasketBtn"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:layout_marginBottom="@dimen/_8sdp"
-                android:background="@android:color/darker_gray"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tabLayout_ll" />
+                android:layout_height="@dimen/_35sdp"
+                android:layout_toEndOf="@+id/wishList"
+                android:background="@color/orange"
+                android:text="@string/add_to_basket"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/_14sdp"
+                android:textStyle="bold" />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txtNoNasties"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/pacifico_regular"
-                android:text="@{data.cleanBeauty.title}"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_18sdp"
-                android:textStyle="bold|italic"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dividerDescription" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txtNoNastiesText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:layout_marginBottom="@dimen/_16sdp"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
-                android:gravity="center"
-                android:text="@{data.cleanBeauty.subTitle}"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_12sdp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtNoNasties" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvNoNastiesImages"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_60sdp"
-                android:layout_marginTop="@dimen/_16sdp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtNoNastiesText" />
-
-            <View
-                android:id="@+id/dividerNoNasties"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:layout_marginBottom="@dimen/_8sdp"
-                android:background="@android:color/darker_gray"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/rvNoNastiesImages" />
-
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="@dimen/_60sdp"
-                android:layout_height="@dimen/_60sdp"
-                android:background="@drawable/shape_pink_oval"
-                android:gravity="center"
-                android:text="@string/lbl_geniune_products"
-                android:textAllCaps="true"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_9sdp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dividerNoNasties"
-                android:layout_margin="@dimen/_10sdp"
-                android:id="@+id/geniuneLogo"/>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/geniuneLogoText"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_10sdp"
-                android:text="@string/geniune_text"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_11sdp"
-                app:layout_constraintBottom_toBottomOf="@+id/geniuneLogo"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/geniuneLogo"
-                app:layout_constraintTop_toTopOf="@+id/geniuneLogo" />
-
-
-            <View
-                android:id="@+id/dividerGenuine"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:layout_marginBottom="@dimen/_8sdp"
-                android:background="@android:color/darker_gray"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/geniuneLogo" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{data.deliveryTitle}"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_12sdp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/dividerGenuine"
-                android:layout_margin="@dimen/_10sdp"
-                android:id="@+id/deliveryOption"/>
-
-
-            <View
-                android:id="@+id/dividerDeliveryOption"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:layout_marginBottom="@dimen/_8sdp"
-                android:background="@android:color/darker_gray"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/deliveryOption" />
-
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/pair_with"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_12sdp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/dividerDeliveryOption"
-                android:layout_margin="@dimen/_10sdp"
-                android:id="@+id/pairWith"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16sdp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/pairWith"
-                android:id="@+id/comboRecyclerView"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginEnd="@dimen/_10sdp"/>
-
-
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    </androidx.core.widget.NestedScrollView>
+        </RelativeLayout>
 
     </RelativeLayout>
 </layout>

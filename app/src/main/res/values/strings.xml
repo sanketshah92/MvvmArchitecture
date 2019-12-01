@@ -21,4 +21,18 @@
     <string name="pair_with">Pair with</string>
     <string name="buy_now">Buy Combo</string>
     <string name="product_details">Product Details</string>
+    <string name="pin_code">Enter Pincode</string>
+    <string name="check">Check</string>
+    <string name="standard_delivery_2_5_working_days">Standard Delivery | 2-5 working days</string>
+    <string name="express_delivery_24_hours">Express Delivery | 24 hours</string>
+    <string name="click_collect_order_online_collect_from_store"><![CDATA[Click & Collect | Order online, Collect from store]]></string>
+    <string name="ask_our_expert">Ask Our Expert</string>
+    <string name="have_a_question_about_this_product_post_it_here">Have a question about this product? Post it here.</string>
+    <string name="post_your_question">Post Your Question</string>
+    <string name="question">Q: %1$s</string>
+    <string name="answer_label">A:</string>
+    <string name="show_all_question_and_answers">Show all Question and Answers</string>
+    <string name="user_reviews_ratings"><![CDATA[User Reviews & Ratings]]></string>
+    <string name="sign_in_to_rate_and_write_a_review">Sign in to rate and write a review</string>
+    <string name="add_to_basket">Add To Basket</string>
 </resources>

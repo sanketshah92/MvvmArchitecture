@@ -7,6 +7,9 @@ import assignment.demoapplication.com.mvvmarchitecture.productdetailmodule.model
 import assignment.demoapplication.com.mvvmarchitecture.productdetailmodule.model.ProductDetailResult
 import assignment.demoapplication.com.mvvmarchitecture.repository.ProductDetailRepository
 import assignment.demoapplication.com.mvvmarchitecture.util.Constants.ApiServiceID.Companion.GET_PRODUCT_DETAIL_SERVICE_ID
+import assignment.demoapplication.com.mvvmarchitecture.util.DD_MMMM_YYYY_format
+import assignment.demoapplication.com.mvvmarchitecture.util.DD_MMMM_format
+import assignment.demoapplication.com.mvvmarchitecture.util.getDateFromLong
 import javax.inject.Inject
 
 class ProductDetailViewModel @Inject constructor(private val repository: ProductDetailRepository) :
@@ -24,10 +27,23 @@ class ProductDetailViewModel @Inject constructor(private val repository: Product
                 Log.e("TYPE CASTE HERE", ":::")
                 val productDetails = (data as ProductDetailResult)
                 Log.e("TYPE CASTED", ":::" + productDetails.brandName)
-                productDetails.skuReviewCount = "${productDetails.skuReviewCount} Reviews"
-                sendDataToView(serviceId,productDetails)
+                sendDataToView(serviceId,processData(productDetails))
             }
         }
+    }
+
+    private fun processData(productDetails: ProductDetailResult) : ProductDetailResult{
+
+        productDetails.skuReviewCount = "${productDetails.skuReviewCount} Reviews"
+
+        for (qna in productDetails.qna){
+           qna.postedBy = "By ${qna.userNickname}, ${getDateFromLong(qna.postedDate, DD_MMMM_format)}"
+        }
+
+        for (review in productDetails.reviews){
+            review.reviewPostedBy = "By ${review.userNickname}, ${getDateFromLong(review.postedDate, DD_MMMM_YYYY_format)}"
+        }
+        return productDetails
     }
 
     private fun sendDataToView(serviceId: Int, productDetailResult: ProductDetailResult) {

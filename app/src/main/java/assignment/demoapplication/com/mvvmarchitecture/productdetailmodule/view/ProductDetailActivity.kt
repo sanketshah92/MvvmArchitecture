@@ -60,6 +60,16 @@ class ProductDetailActivity : BaseActivity() {
                         adapter = VolumeRecyclerViewAdapter(this@ProductDetailActivity, response.productDetailResult.variants.volume)
                         layoutManager = LinearLayoutManager(this@ProductDetailActivity, LinearLayoutManager.HORIZONTAL, false )
                     }
+
+                    binding.questionsRecyclerView.apply {
+                        adapter = QuestionAnswerAdapter(this@ProductDetailActivity, response.productDetailResult.qna)
+                        layoutManager = LinearLayoutManager(this@ProductDetailActivity, LinearLayoutManager.VERTICAL, false )
+                    }
+
+                    binding.reviewRatingRecyclerView.apply {
+                        adapter = ReviewAndRatingAdapter(this@ProductDetailActivity, response.productDetailResult.reviews)
+                        layoutManager = LinearLayoutManager(this@ProductDetailActivity, LinearLayoutManager.VERTICAL, false )
+                    }
                 }
             }
         })
