@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import assignment.demoapplication.com.mvvmarchitecture.di.util.ViewModelKey
 import assignment.demoapplication.com.mvvmarchitecture.productdetailmodule.viewmodel.ProductDetailViewModel
-import assignment.demoapplication.com.mvvmarchitecture.sample.viewmodel.SampleViewModel
 import assignment.demoapplication.com.mvvmarchitecture.util.ViewModelFactory
 import dagger.Binds
 import dagger.Module
@@ -13,10 +12,10 @@ import dagger.multibindings.IntoMap
 @Module
 abstract class ViewModelModule {
 
-    @Binds
+ /*   @Binds
     @IntoMap
     @ViewModelKey(SampleViewModel::class)
-    abstract fun bindListViewModel(listViewModel: SampleViewModel): ViewModel
+    abstract fun bindListViewModel(listViewModel: SampleViewModel): ViewModel*/
 
 
     @Binds

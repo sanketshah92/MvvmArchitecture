@@ -1,4 +1,4 @@
-package assignment.demoapplication.com.mvvmarchitecture.productdetailmodule.adapter
+package assignment.demoapplication.com.mvvmarchitecture.productdetailmodule.view.adapter
 
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +12,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.viewpager.widget.ViewPager
 import assignment.demoapplication.com.mvvmarchitecture.R
 import assignment.demoapplication.com.mvvmarchitecture.databinding.ViewpagerImageLayoutBinding
-import assignment.demoapplication.com.mvvmarchitecture.databinding.ViewpagerImageLayoutBindingImpl
 import com.bumptech.glide.Glide
 
 

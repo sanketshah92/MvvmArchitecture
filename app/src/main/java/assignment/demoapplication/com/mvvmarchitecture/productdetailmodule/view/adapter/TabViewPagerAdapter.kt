@@ -1,12 +1,11 @@
-package assignment.demoapplication.com.mvvmarchitecture.productdetailmodule.adapter
+package assignment.demoapplication.com.mvvmarchitecture.productdetailmodule.view.adapter
 
 import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import assignment.demoapplication.com.mvvmarchitecture.DescriptionData
 import assignment.demoapplication.com.mvvmarchitecture.productdetailmodule.model.Facet
-import assignment.demoapplication.com.mvvmarchitecture.productdetailmodule.view.TabFragment
+import assignment.demoapplication.com.mvvmarchitecture.productdetailmodule.view.fragment.TabFragment
 
 class TabViewPagerAdapter(
     var context: Context?,

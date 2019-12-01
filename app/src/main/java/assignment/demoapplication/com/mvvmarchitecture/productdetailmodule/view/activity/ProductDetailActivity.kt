@@ -1,4 +1,4 @@
-package assignment.demoapplication.com.mvvmarchitecture.productdetailmodule.view
+package assignment.demoapplication.com.mvvmarchitecture.productdetailmodule.view.activity
 
 import android.os.Bundle
 import android.view.View
@@ -7,11 +7,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import assignment.demoapplication.com.mvvmarchitecture.DescriptionData
 import assignment.demoapplication.com.mvvmarchitecture.R
 import assignment.demoapplication.com.mvvmarchitecture.base.BaseActivity
 import assignment.demoapplication.com.mvvmarchitecture.databinding.ActivityProductDetailLayoutBinding
-import assignment.demoapplication.com.mvvmarchitecture.productdetailmodule.adapter.*
+import assignment.demoapplication.com.mvvmarchitecture.productdetailmodule.view.adapter.*
 import assignment.demoapplication.com.mvvmarchitecture.productdetailmodule.model.Facet
 import assignment.demoapplication.com.mvvmarchitecture.productdetailmodule.viewmodel.ProductDetailViewModel
 import assignment.demoapplication.com.mvvmarchitecture.util.Constants.ApiServiceID.Companion.GET_PRODUCT_DETAIL_SERVICE_ID

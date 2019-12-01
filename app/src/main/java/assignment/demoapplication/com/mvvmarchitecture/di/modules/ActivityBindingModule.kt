@@ -1,6 +1,6 @@
 package assignment.demoapplication.com.mvvmarchitecture.di.modules
 
-import assignment.demoapplication.com.mvvmarchitecture.productdetailmodule.view.ProductDetailActivity
+import assignment.demoapplication.com.mvvmarchitecture.productdetailmodule.view.activity.ProductDetailActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

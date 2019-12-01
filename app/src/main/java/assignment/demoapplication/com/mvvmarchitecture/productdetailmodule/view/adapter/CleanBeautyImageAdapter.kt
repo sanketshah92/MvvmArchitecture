@@ -1,4 +1,4 @@
-package assignment.demoapplication.com.mvvmarchitecture.productdetailmodule.adapter
+package assignment.demoapplication.com.mvvmarchitecture.productdetailmodule.view.adapter
 
 import android.content.Context
 import android.view.LayoutInflater

@@ -12,7 +12,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".productdetailmodule.view.TabFragment">
+        tools:context=".productdetailmodule.view.fragment.TabFragment">
 
         <!-- TODO: Update blank fragment layout -->
         <TextView

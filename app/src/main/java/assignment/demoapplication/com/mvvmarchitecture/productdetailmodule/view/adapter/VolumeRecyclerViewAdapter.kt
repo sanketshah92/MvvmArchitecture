@@ -1,8 +1,7 @@
-package assignment.demoapplication.com.mvvmarchitecture.productdetailmodule.adapter
+package assignment.demoapplication.com.mvvmarchitecture.productdetailmodule.view.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView

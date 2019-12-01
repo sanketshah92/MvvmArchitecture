@@ -1,4 +1,4 @@
-package assignment.demoapplication.com.mvvmarchitecture.productdetailmodule.view
+package assignment.demoapplication.com.mvvmarchitecture.productdetailmodule.view.fragment
 
 
 import android.os.Bundle
