@@ -29,7 +29,7 @@
     <string name="ask_our_expert">Ask Our Expert</string>
     <string name="have_a_question_about_this_product_post_it_here">Have a question about this product? Post it here.</string>
     <string name="post_your_question">Post Your Question</string>
-    <string name="question">Q: %1$s</string>
+    <string name="question_label">Q:</string>
     <string name="answer_label">A:</string>
     <string name="show_all_question_and_answers">Show all Question and Answers</string>
     <string name="user_reviews_ratings"><![CDATA[User Reviews & Ratings]]></string>

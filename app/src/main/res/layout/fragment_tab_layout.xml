@@ -11,13 +11,13 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         tools:context=".productdetailmodule.view.TabFragment">
 
         <!-- TODO: Update blank fragment layout -->
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="@{data}"
             android:layout_margin="@dimen/_10sdp"
             android:textSize="@dimen/_12sdp"

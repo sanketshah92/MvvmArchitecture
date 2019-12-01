@@ -13,12 +13,14 @@ import javax.inject.Inject
 
 class ProductDetailRepository @Inject constructor(val service: APIinterface) : BaseRepository() {
 
-    fun getProductDetail(serviceID: Int) {
+    fun getProductDetail(serviceID: Int,parameters: Map<String,String>) {
         networkCall(
             GET_METHOD,
             GET_PRODUCT_DETAIL_URL,
             resultClass = ProductDetailResult::class.java,
-            serviceID = serviceID
+            serviceID = serviceID,
+            parameters = parameters
+
         )
     }
 

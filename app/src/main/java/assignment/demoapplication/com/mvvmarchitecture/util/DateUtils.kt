@@ -9,5 +9,5 @@ val DD_MMMM_YYYY_format = "dd MMMM yyyy"
 @SuppressLint("SimpleDateFormat")
 fun getDateFromLong(dateInMillis: Long, format: String) :String{
     val formatter : SimpleDateFormat = SimpleDateFormat(format)
-    return formatter.format( Date(dateInMillis))
+    return "01 January".takeIf { dateInMillis == null } ?: formatter.format( Date(dateInMillis))
 }

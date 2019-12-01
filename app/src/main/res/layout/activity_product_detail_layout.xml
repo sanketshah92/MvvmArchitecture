@@ -11,15 +11,17 @@
             type="assignment.demoapplication.com.mvvmarchitecture.productdetailmodule.model.ProductDetailResult" />
     </data>
 
-
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
@@ -58,18 +60,31 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appBar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/progress_circular"
+            android:visibility="gone"/>
+
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/appBar">
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appBar"
+            app:layout_constraintBottom_toTopOf="@+id/addToBasketBtn"
+            android:id="@+id/nestedScrollView">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/white"
                 tools:context=".productdetailmodule.view.ProductDetailActivity">
-
 
                 <androidx.viewpager.widget.ViewPager
                     android:id="@+id/viewPager"
@@ -96,7 +111,16 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/viewPager" />
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:src="@drawable/ic_export"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/brandName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -146,33 +170,28 @@
 
                 <androidx.appcompat.widget.AppCompatRatingBar
                     android:id="@+id/ratingBar"
-                    style="?android:attr/ratingBarStyleIndicator"
+                    style="?android:attr/ratingBarStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_10sdp"
                     android:max="5"
+                    android:numStars="5"
+                    android:progressTint="@color/orange"
                     android:rating="@{data.skuAverageRating}"
-                    android:scaleX="1"
-                    android:scaleY="1"
-                    android:transformPivotX="0dp"
-                    android:transformPivotY="0dp"
-
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/dividerRating" />
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/review"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_margin="@dimen/_10sdp"
                     android:text="@{data.skuReviewCount}"
                     android:textColor="@color/orange"
                     android:textSize="@dimen/_12sdp"
                     android:textStyle="bold"
+                    android:gravity="end"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@id/ratingBar"
                     app:layout_constraintTop_toBottomOf="@id/dividerRating" />
 
@@ -180,7 +199,7 @@
                     android:id="@+id/dividerVolume"
                     android:layout_width="0dp"
                     android:layout_height="1dp"
-                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
                     android:background="@android:color/darker_gray"
                     app:layout_constraintBottom_toTopOf="@id/dividerAllVolume"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -205,6 +224,7 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toTopOf="@id/dividerVolumeEnd"
                     app:layout_constraintStart_toStartOf="parent"
+                    android:layout_margin="@dimen/_10sdp"
                     app:layout_constraintTop_toBottomOf="@id/volumeLable" />
 
 
@@ -268,7 +288,6 @@
                         android:id="@+id/tabViewPager"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
-
 
                 </LinearLayout>
 
@@ -541,10 +560,11 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/questionsRecyclerView"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_10sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
+                    android:nestedScrollingEnabled="false"
                     app:layout_constraintTop_toBottomOf="@id/postYourQuestionBtn" />
 
                 <androidx.appcompat.widget.AppCompatButton
@@ -615,19 +635,12 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/reviewRatingRecyclerView"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_10sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
+                    android:nestedScrollingEnabled="false"
                     app:layout_constraintTop_toBottomOf="@+id/signInAndWriteReviewBtn" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_35sdp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/reviewRatingRecyclerView"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -636,25 +649,28 @@
         </androidx.core.widget.NestedScrollView>
 
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_35sdp"
-            android:layout_alignParentBottom="true">
+
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/wishList"
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_35sdp"
-                android:layout_centerVertical="true"
-                android:background="@android:color/white"
-                android:foregroundGravity="center"
-                android:src="@drawable/ic_heart" />
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_heart"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/nestedScrollView"
+                app:layout_constraintEnd_toStartOf="@id/addToBasketBtn"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/addToBasketBtn"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_35sdp"
-                android:layout_toEndOf="@+id/wishList"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/nestedScrollView"
+                app:layout_constraintStart_toEndOf="@+id/wishList"
                 android:background="@color/orange"
                 android:text="@string/add_to_basket"
                 android:textAllCaps="false"
@@ -662,7 +678,5 @@
                 android:textSize="@dimen/_14sdp"
                 android:textStyle="bold" />
 
-        </RelativeLayout>
-
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

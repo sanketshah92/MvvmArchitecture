@@ -1,6 +1,7 @@
 package assignment.demoapplication.com.mvvmarchitecture.productdetailmodule.view
 
 import android.os.Bundle
+import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -35,6 +36,10 @@ class ProductDetailActivity : BaseActivity() {
     }
 
      private fun init() {
+         binding.progressCircular.visibility =View.VISIBLE
+         binding.nestedScrollView.visibility = View.GONE
+         binding.addToBasketBtn.visibility = View.GONE
+         binding.wishList.visibility = View.GONE
         productDetailViewModel.getProductDetail()
         observeApiResposne()
     }
@@ -43,6 +48,10 @@ class ProductDetailActivity : BaseActivity() {
         productDetailViewModel.apiResponse.observe(this, Observer { response ->
             when (response.serviceID) {
                 GET_PRODUCT_DETAIL_SERVICE_ID -> {
+                    binding.progressCircular.visibility =View.GONE
+                    binding.nestedScrollView.visibility = View.VISIBLE
+                    binding.addToBasketBtn.visibility = View.VISIBLE
+                    binding.wishList.visibility = View.VISIBLE
                     binding.data = response.productDetailResult
                     setUpProductImage(response.productDetailResult.skuImageUrls)
                     setUpTabs(response.productDetailResult.facets)

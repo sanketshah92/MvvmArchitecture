@@ -11,13 +11,27 @@
     android:layout_height="wrap_content">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/questionLabel"
+        android:text="@string/question_label"
+        app:layout_constraintEnd_toStartOf="@+id/question"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_margin="@dimen/_10sdp"
-        android:text="@{String.format(@string/question,data.queryText)}"
+        android:textColor="@android:color/black"
         android:textStyle="bold"
+        android:textSize="@dimen/_12sdp"
+        android:layout_margin="@dimen/_10sdp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/questionLabel"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@{data.queryText}"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
         android:textSize="@dimen/_12sdp"
         android:textColor="@android:color/black"
         android:id="@+id/question"/>
@@ -54,6 +68,17 @@
         android:layout_marginEnd="@dimen/_10sdp"
         android:textColor="@android:color/black"
         android:id="@+id/answerText"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/answerText"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:text="@{data.answerPostedBy}"
+        android:textSize="@dimen/_12sdp"
+        android:textColor="@color/orange"
+        android:layout_marginTop="@dimen/_10sdp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -56,6 +56,7 @@
             android:tint="@android:color/black"
             android:layout_toEndOf="@id/sku1_image"
             android:id="@+id/plus"
+            android:padding="@dimen/_4sdp"
             android:layout_marginTop="@dimen/_25sdp"/>
 
         <ImageView
@@ -107,6 +108,7 @@
             android:textAllCaps="false"
             android:textColor="@color/orange"
             android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/_4sdp"
             android:background="@drawable/rectangle_with_orange_border"/>
 
 

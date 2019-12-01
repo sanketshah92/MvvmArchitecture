@@ -21,6 +21,7 @@
             android:numStars="5"
             android:stepSize="0.1"
             android:isIndicator="true"
+            android:progressTint="@color/orange"
             app:layout_constraintTop_toTopOf="parent"
             android:id="@+id/rating"
             android:layout_marginTop="@dimen/_10sdp"/>

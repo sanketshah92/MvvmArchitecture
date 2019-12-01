@@ -25,9 +25,10 @@ open class BaseRepository {
         url: String,
         resultClass: Class<*>,
         requestObj: Any? = null,
-        serviceID: Int
+        serviceID: Int,
+        parameters: Map<String, String>? = null
     ) {
-        APIinterface.callBack(apIinterface, apiMethod, url, requestObj)
+        APIinterface.callBack(apIinterface, apiMethod, url, requestObj,parameters.takeIf { parameters!=null }?: HashMap())
             ?.subscribeOn(Schedulers.newThread())
             ?.observeOn(AndroidSchedulers.mainThread())
             ?.subscribe(object : Observer<ResponseWrapper> {

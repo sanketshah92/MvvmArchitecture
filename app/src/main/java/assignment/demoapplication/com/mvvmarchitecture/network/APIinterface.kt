@@ -17,7 +17,7 @@ interface APIinterface {
     ): Observable<ResponseWrapper>
 
     @GET("{url}")
-    fun getMethod(@Path(value = "url", encoded = true) methodUrl: String , @Query(value = "app") app:String , @Query(value = "version") version:String,@Query(value = "shop") shop:Boolean): Observable<ResponseWrapper>
+    fun getMethod(@Path(value = "url", encoded = true) methodUrl: String , @QueryMap parameters: Map<String, String>): Observable<ResponseWrapper>
 
 
     companion object {
@@ -25,11 +25,12 @@ interface APIinterface {
             apiCallInterface: APIinterface?,
             apiMethod: Int,
             url: String,
-            requestObj: Any?
+            requestObj: Any?,
+            parameters: Map<String, String>
         ): Observable<ResponseWrapper>? {
             var call: Observable<ResponseWrapper>? = null
             when (apiMethod) {
-                GET_METHOD -> call = apiCallInterface?.getMethod(url,"web","3.0.0",false)
+                GET_METHOD -> call = apiCallInterface?.getMethod(url,parameters)
                 POST_METHOD -> call = apiCallInterface?.postMethod(url, requestObj!!)
             }
             return call

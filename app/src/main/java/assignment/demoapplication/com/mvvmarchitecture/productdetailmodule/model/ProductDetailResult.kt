@@ -78,7 +78,8 @@ data class Qna(
     val postedDate: Long,
     val queryText: String,
     val userNickname: String,
-    var postedBy : String
+    var postedBy : String,
+    var answerPostedBy: String
 )
 
 data class Review(
